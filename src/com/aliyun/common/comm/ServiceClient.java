@@ -1,6 +1,17 @@
 package com.aliyun.common.comm;
 
-import com.aliyun.common.auth.RequestSigner;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.NoHttpResponseException;
+
 import com.aliyun.common.parser.ResultParseException;
 import com.aliyun.common.parser.ResultParser;
 import com.aliyun.common.utils.CodingUtils;
@@ -10,17 +21,6 @@ import com.aliyun.openservices.ClientConfiguration;
 import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
 import com.aliyun.openservices.ServiceException;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.URI;
-import java.util.List;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.NoHttpResponseException;
 
 public abstract class ServiceClient
 {

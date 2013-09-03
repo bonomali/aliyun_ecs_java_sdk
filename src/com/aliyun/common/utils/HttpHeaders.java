@@ -1,7 +1,6 @@
 package com.aliyun.common.utils;
 
-public abstract interface HttpHeaders
-{
+public abstract interface HttpHeaders {
   public static final String AUTHORIZATION = "Authorization";
   public static final String CACHE_CONTROL = "Cache-Control";
   public static final String CONTENT_DISPOSITION = "Content-Disposition";
@@ -19,7 +18,8 @@ public abstract interface HttpHeaders
 }
 
 
-/* Location:           E:\Projects\0.OS\AliyunSC\OSS_SDK\aliyun_java_sdk_20130604\aliyun-openservices-1.0.12.jar
- * Qualified Name:     com.aliyun.common.utils.HttpHeaders
- * JD-Core Version:    0.7.0-SNAPSHOT-20130630
+/*
+ * Location:
+ * E:\Projects\0.OS\AliyunSC\OSS_SDK\aliyun_java_sdk_20130604\aliyun-openservices-1.0.12.jar
+ * Qualified Name: com.aliyun.common.utils.HttpHeaders JD-Core Version: 0.7.0-SNAPSHOT-20130630
  */
