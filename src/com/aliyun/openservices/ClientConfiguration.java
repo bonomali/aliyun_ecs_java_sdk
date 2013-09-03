@@ -1,11 +1,10 @@
 package com.aliyun.openservices;
 
-public class ClientConfiguration
-{
+public class ClientConfiguration {
   private static final String DEFAULT_USER_AGENT = "aliyun-sdk-java";
-  
+
   private static final int DEFAULT_MAX_RETRIES = 3;
-  
+
   private String userAgent = "aliyun-sdk-java";
   private String proxyHost;
   private int proxyPort;
@@ -17,120 +16,100 @@ public class ClientConfiguration
   private int socketTimeout = 50000;
   private int connectionTimeout = 50000;
   private int maxErrorRetry = 3;
-  
-  public String getUserAgent()
-  {
+
+  public String getUserAgent() {
     return this.userAgent;
   }
-  
-  public void setUserAgent(String userAgent)
-  {
+
+  public void setUserAgent(String userAgent) {
     this.userAgent = userAgent;
   }
-  
-  public String getProxyHost()
-  {
+
+  public String getProxyHost() {
     return this.proxyHost;
   }
-  
-  public void setProxyHost(String proxyHost)
-  {
+
+  public void setProxyHost(String proxyHost) {
     this.proxyHost = proxyHost;
   }
-  
-  public int getProxyPort()
-  {
+
+  public int getProxyPort() {
     return this.proxyPort;
   }
-  
-  public void setProxyPort(int proxyPort)
-  {
+
+  public void setProxyPort(int proxyPort) {
     this.proxyPort = proxyPort;
   }
-  
-  public String getProxyUsername()
-  {
+
+  public String getProxyUsername() {
     return this.proxyUsername;
   }
-  
-  public void setProxyUsername(String proxyUsername)
-  {
+
+  public void setProxyUsername(String proxyUsername) {
     this.proxyUsername = proxyUsername;
   }
-  
-  public String getProxyPassword()
-  {
+
+  public String getProxyPassword() {
     return this.proxyPassword;
   }
-  
-  public void setProxyPassword(String proxyPassword)
-  {
+
+  public void setProxyPassword(String proxyPassword) {
     this.proxyPassword = proxyPassword;
   }
-  
-  public String getProxyDomain()
-  {
+
+  public String getProxyDomain() {
     return this.proxyDomain;
   }
-  
-  public void setProxyDomain(String proxyDomain)
-  {
+
+  public void setProxyDomain(String proxyDomain) {
     this.proxyDomain = proxyDomain;
   }
-  
-  public String getProxyWorkstation()
-  {
+
+  public String getProxyWorkstation() {
     return this.proxyWorkstation;
   }
-  
-  public void setProxyWorkstation(String proxyWorkstation)
-  {
+
+  public void setProxyWorkstation(String proxyWorkstation) {
     this.proxyWorkstation = proxyWorkstation;
   }
-  
-  public int getMaxConnections()
-  {
+
+  public int getMaxConnections() {
     return this.maxConnections;
   }
-  
-  public void setMaxConnections(int maxConnections)
-  {
+
+  public void setMaxConnections(int maxConnections) {
     this.maxConnections = maxConnections;
   }
-  
-  public int getSocketTimeout()
-  {
+
+  public int getSocketTimeout() {
     return this.socketTimeout;
   }
-  
-  public void setSocketTimeout(int socketTimeout)
-  {
+
+  public void setSocketTimeout(int socketTimeout) {
     this.socketTimeout = socketTimeout;
   }
-  
-  public int getConnectionTimeout()
-  {
+
+  public int getConnectionTimeout() {
     return this.connectionTimeout;
   }
-  
-  public void setConnectionTimeout(int connectionTimeout)
-  {
+
+  public void setConnectionTimeout(int connectionTimeout) {
     this.connectionTimeout = connectionTimeout;
   }
-  
-  public int getMaxErrorRetry()
-  {
+
+  public int getMaxErrorRetry() {
     return this.maxErrorRetry;
   }
-  
-  public void setMaxErrorRetry(int maxErrorRetry)
-  {
+
+  public void setMaxErrorRetry(int maxErrorRetry) {
     this.maxErrorRetry = maxErrorRetry;
   }
 }
 
 
-/* Location:           E:\Projects\0.OS\AliyunSC\OSS_SDK\aliyun_java_sdk_20130604\aliyun-openservices-1.0.12.jar
- * Qualified Name:     com.aliyun.openservices.ClientConfiguration
- * JD-Core Version:    0.7.0-SNAPSHOT-20130630
+/*
+ * Location:
+ * E:\Projects\0.OS\AliyunSC\OSS_SDK\aliyun_java_sdk_20130604\aliyun-openservices-1.0.12.jar
+ * Qualified Name: com.aliyun.openservices.ClientConfiguration JD-Core Version:
+ * 0.7.0-SNAPSHOT-20130630
  */
