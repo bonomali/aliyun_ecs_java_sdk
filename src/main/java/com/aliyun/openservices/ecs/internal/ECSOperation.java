@@ -18,15 +18,14 @@ import com.aliyun.openservices.ecs.ECSException;
 
 public abstract class ECSOperation {
   private URI endpoint;
-  private ServiceClient client;
+  private ServiceClient serviceClient;
   private ServiceCredentials credentials;
 
-  protected ECSOperation(URI endpoint, ServiceClient client, ServiceCredentials cred) {
-    assert ((endpoint != null) && (client != null) && (cred != null));
-
+  protected ECSOperation(URI endpoint, ServiceClient serviceClient, ServiceCredentials credentials) {
+    assert ((endpoint != null) && (serviceClient != null) && (credentials != null));
     this.endpoint = endpoint;
-    this.client = client;
-    this.credentials = cred;
+    this.serviceClient = serviceClient;
+    this.credentials = credentials;
   }
 
   public URI getEndpoint() {
@@ -41,7 +40,7 @@ public abstract class ECSOperation {
   protected ResponseMessage send(RequestMessage request, ExecutionContext context,
       boolean keepResponseOpen) throws ECSException, ClientException {
     try {
-      ResponseMessage response = this.client.sendRequest(request, context);
+      ResponseMessage response = this.serviceClient.sendRequest(request, context);
       if (!keepResponseOpen) {
         ECSUtils.safeCloseResponse(response);
       }
@@ -82,23 +81,23 @@ public abstract class ECSOperation {
     return createDefaultContext(method, null, null);
   }
 
-//  protected <T extends ECSResult> T invoke(String ecsAction, HttpMethod httpMethod,
-//      Map<String, String> parameters, Class<?> resultClass) throws ECSException, ClientException {
-//    RequestMessage request = buildRequest(ecsAction, httpMethod, parameters);
-//    try {
-//      return (ECSResult) this.client.sendRequest(request, createContext(ecsAction),
-//          OTSResultParserFactory.createFactory().createResultParser(resultClass));
-//    } catch (ServiceException e) {
-//      throw handleException(e);
-//    }
-//  }
+  // protected <T extends ECSResult> T invoke(String ecsAction, HttpMethod httpMethod,
+  // Map<String, String> parameters, Class<?> resultClass) throws ECSException, ClientException {
+  // RequestMessage request = buildRequest(ecsAction, httpMethod, parameters);
+  // try {
+  // return (ECSResult) this.client.sendRequest(request, createContext(ecsAction),
+  // OTSResultParserFactory.createFactory().createResultParser(resultClass));
+  // } catch (ServiceException e) {
+  // throw handleException(e);
+  // }
+  // }
 
   protected void invokeNoResult(String ecsAction, HttpMethod httpMethod,
       Map<String, String> parameters) throws ECSException, ClientException {
     RequestMessage request = buildRequest(ecsAction, httpMethod, parameters);
     ResponseMessage response = null;
     try {
-      response = this.client.sendRequest(request, createContext(ecsAction));
+      response = this.serviceClient.sendRequest(request, createContext(ecsAction));
       return;
     } catch (ServiceException e) {
       throw handleException(e);

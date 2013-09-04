@@ -3,14 +3,27 @@ package com.aliyun.common.utils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import com.aliyun.openservices.ecs.internal.ECSConstants;
 
 public class HttpUtil {
   private static final String ISO_8859_1_CHARSET = "iso-8859-1";
   private static final String JAVA_CHARSET = "utf-8";
 
+  public static String urlEncode(String value) throws UnsupportedEncodingException {
+    return urlEncode(value, ECSConstants.DEFAULT_ENCODING);
+  }
+
   public static String urlEncode(String value, String charset) throws UnsupportedEncodingException {
     return value != null ? URLEncoder.encode(value, charset).replace("+", "%20")
         .replace("*", "%2A").replace("%7E", "~") : null;
+  }
+
+
+  public static String paramsToQueryString(Map<String, String> params)
+      throws UnsupportedEncodingException {
+    return paramToQueryString(params, ECSConstants.DEFAULT_ENCODING);
   }
 
   public static String paramToQueryString(Map<String, String> params, String charset)
@@ -39,6 +52,7 @@ public class HttpUtil {
 
     return paramString.toString();
   }
+
 
   public static void convertHeaderCharsetFromIso88591(Map<String, String> headers) {
     convertHeaderCharset(headers, "iso-8859-1", "utf-8");
