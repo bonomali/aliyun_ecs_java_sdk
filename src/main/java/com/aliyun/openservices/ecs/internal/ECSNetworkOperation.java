@@ -6,6 +6,8 @@ import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
 
 public class ECSNetworkOperation extends ECSOperation {
+  private static final String ACTION_ALLOCATE_PUBLIC_IP_ADDRESS = "AllocatePublicIpAddress";
+  private static final String ACTION_RELEASE_PUBLIC_IP_ADDRESS = "ReleasePublicIpAddress";
 
   public ECSNetworkOperation(URI endpoint, ServiceClient client, ServiceCredentials cred) {
     super(endpoint, client, cred);

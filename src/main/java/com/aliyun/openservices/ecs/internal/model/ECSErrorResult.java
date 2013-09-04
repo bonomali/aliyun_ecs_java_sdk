@@ -13,10 +13,10 @@ public class ECSErrorResult {
   public String RequestId;
   @XmlElement(name = "HostId")
   public String HostId;
-  @XmlElement(name="ResourceType")
-  public String ResourceType;
-  @XmlElement(name = "Method")
-  public String Method;
-  @XmlElement(name = "Header")
-  public String Header;
+  // @XmlElement(name = "ResourceType")
+  // public String ResourceType;
+  // @XmlElement(name = "Method")
+  // public String Method;
+  // @XmlElement(name = "Header")
+  // public String Header;
 }

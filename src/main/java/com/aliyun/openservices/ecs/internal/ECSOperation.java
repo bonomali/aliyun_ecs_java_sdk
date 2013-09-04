@@ -15,6 +15,7 @@ import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
 import com.aliyun.openservices.ServiceException;
 import com.aliyun.openservices.ecs.ECSException;
+import com.aliyun.openservices.ecs.internal.model.ECSResult;
 
 public abstract class ECSOperation {
   private URI endpoint;
@@ -81,16 +82,17 @@ public abstract class ECSOperation {
     return createDefaultContext(method, null, null);
   }
 
-  // protected <T extends ECSResult> T invoke(String ecsAction, HttpMethod httpMethod,
-  // Map<String, String> parameters, Class<?> resultClass) throws ECSException, ClientException {
-  // RequestMessage request = buildRequest(ecsAction, httpMethod, parameters);
-  // try {
-  // return (ECSResult) this.client.sendRequest(request, createContext(ecsAction),
-  // OTSResultParserFactory.createFactory().createResultParser(resultClass));
-  // } catch (ServiceException e) {
-  // throw handleException(e);
-  // }
-  // }
+  @SuppressWarnings("unchecked")
+  protected <T extends ECSResult> T invoke(String ecsAction, HttpMethod httpMethod,
+      Map<String, String> parameters, Class<?> resultClass) throws ECSException, ClientException {
+    RequestMessage request = buildRequest(ecsAction, httpMethod, parameters);
+    try {
+      return (T) this.serviceClient.sendRequest(request, createContext(ecsAction),
+          ECSResultParserFactory.createFactory().createResultParser(resultClass));
+    } catch (ServiceException e) {
+      throw handleException(e);
+    }
+  }
 
   protected void invokeNoResult(String ecsAction, HttpMethod httpMethod,
       Map<String, String> parameters) throws ECSException, ClientException {

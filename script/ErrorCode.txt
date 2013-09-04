@@ -52,3 +52,26 @@ IdempotentParameterMismatch
     InsufficientInstanceCapacity
     InternalError
     ServiceUnavailable
+	
+	// ECS Operation Actions
+	StartInstance
+	StopInstance
+	RebootInstance
+	ResetInstance
+	ModifyInstanceAttribute
+	DescribeInstanceStatus
+	DescribeInstanceAttribute
+	DescribeInstanceDisks
+	DescribeImages
+	AllocatePublicIpAddress
+	ReleasePublicIpAddress
+	CreateSecurityGroup
+	AuthorizeSecurityGroup
+	DescribeSecurityGroupAttribute
+	DescribeSecurityGroups
+	RevokeSecurityGroup
+	DeleteSecurityGroup
+	DescribeRegions
+	DescribeZones
+	GetMonitorData
+	DescribeInstanceTypes
