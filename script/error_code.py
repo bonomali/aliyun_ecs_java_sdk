@@ -53,7 +53,7 @@ if __name__ == '__main__':
                         error_code = camel_2_upper_case(line)
                         ecf.write('public static final String %s = "%s";' % (
                            error_code, line))
-                        hscf.write('ErrorCode2HttpStatusCode.put(%s.%s, %d);' %
+                        hscf.write('.put(%s.%s, %d)' %
                                (error_code_2_side(error_code), error_code,
                                 error_code_2_http_status_code(error_code)))
                         

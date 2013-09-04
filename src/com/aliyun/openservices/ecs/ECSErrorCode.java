@@ -1,7 +1,8 @@
 package com.aliyun.openservices.ecs;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
 
 public interface ECSErrorCode {
   public static interface Client {
@@ -72,66 +73,60 @@ public interface ECSErrorCode {
   }
 
 
-  public static Map<String, Integer> ErrorCode2HttpStatusCode = new HashMap<String, Integer>() {
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -698481294690974176L;
-    {
-      ErrorCode2HttpStatusCode.put(Client.UNSUPPORTED_OPERATION, 400);
-      ErrorCode2HttpStatusCode.put(Client.NO_SUCH_VERSION, 400);
-      ErrorCode2HttpStatusCode.put(Client.MISSING_PARAMETER, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_PARAMETER, 400);
-      ErrorCode2HttpStatusCode.put(Client.THROTTLING, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_ACCESS_KEY_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.FORBIDDEN, 403);
-      ErrorCode2HttpStatusCode.put(Client.SIGNATURE_DOES_NOT_MATCH, 403);
-      ErrorCode2HttpStatusCode.put(Client.SIGNATURE_NONCE_USED, 400);
-      ErrorCode2HttpStatusCode.put(Client.IDEMPOTENT_PARAMETER_MISMATCH, 400);
-      ErrorCode2HttpStatusCode.put(Client.INCORRECT_INSTANCE_STATUS, 400);
-      ErrorCode2HttpStatusCode.put(Client.INSTANCE_MOUNTED_SNAPSHOT, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SECURITY_GROUP_STATUS, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SECURITY_GROUP_IN_USE, 400);
-      ErrorCode2HttpStatusCode.put(Client.SECURITY_GROUP_LIMIT_EXCEEDED, 400);
-      ErrorCode2HttpStatusCode.put(Client.SECURITY_GROUP_RULE_LIMIT_EXCEEDED, 400);
-      ErrorCode2HttpStatusCode.put(Client.SECURITY_GROUP_INSTANCE_LIMIT_EXCEED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SNAPSHOT_IN_USE, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_INSTANCE_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_INSTANCE_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_INSTANCE_TYPE_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_REGION_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_ZONE_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_NOT_READY, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_TYPE_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SNAPSHOT_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SNAPSHOT_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SNAPSHOT_UNBOOTABLE, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SNAPSHOT_NOT_READY, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_PASSWORD_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_PUBLIC_IP_ADDRESS_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_PUBLIC_IP_ADDRESS_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_HOST_NAME_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_IMAGE_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_IMAGE_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SECURITY_GROUP_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SECURITY_GROUP_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SOURCE_GROUP_ID_NOT_FOUND, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SOURCE_GROUP_ID_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SECURITY_GROUP_DESCRIPTION, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_IP_PROTOCOL, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_SIZE_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_DISK_SIZE_EXCEEDED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_INTERNET_MAX_BANDWIDTH_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_SOURCE_CIDR_IP_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_PORT_RANGE_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_POLICY_MALFORMED, 400);
-      ErrorCode2HttpStatusCode.put(Client.INVALID_NIC_TYPE_MALFORMED, 400);
+  public static Map<String, Integer> ErrorCode2HttpStatusCode = ImmutableMap.<String, Integer>builder()
+      .put(Client.UNSUPPORTED_OPERATION, 400)
+      .put(Client.NO_SUCH_VERSION, 400)
+      .put(Client.MISSING_PARAMETER, 400)
+      .put(Client.INVALID_PARAMETER, 400)
+      .put(Client.THROTTLING, 400)
+      .put(Client.INVALID_ACCESS_KEY_ID_NOT_FOUND, 400)
+      .put(Client.FORBIDDEN, 403)
+      .put(Client.SIGNATURE_DOES_NOT_MATCH, 403)
+      .put(Client.SIGNATURE_NONCE_USED, 400)
+      .put(Client.IDEMPOTENT_PARAMETER_MISMATCH, 400)
+      .put(Client.INCORRECT_INSTANCE_STATUS, 400)
+      .put(Client.INSTANCE_MOUNTED_SNAPSHOT, 400)
+      .put(Client.INVALID_SECURITY_GROUP_STATUS, 400)
+      .put(Client.INVALID_SECURITY_GROUP_IN_USE, 400)
+      .put(Client.SECURITY_GROUP_LIMIT_EXCEEDED, 400)
+      .put(Client.SECURITY_GROUP_RULE_LIMIT_EXCEEDED, 400)
+      .put(Client.SECURITY_GROUP_INSTANCE_LIMIT_EXCEED, 400)
+      .put(Client.INVALID_SNAPSHOT_IN_USE, 400)
+      .put(Client.INVALID_INSTANCE_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_INSTANCE_ID_MALFORMED, 400)
+      .put(Client.INVALID_INSTANCE_TYPE_NOT_FOUND, 400)
+      .put(Client.INVALID_REGION_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_ZONE_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_DISK_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_DISK_ID_MALFORMED, 400)
+      .put(Client.INVALID_DISK_NOT_READY, 400)
+      .put(Client.INVALID_DISK_TYPE_NOT_FOUND, 400)
+      .put(Client.INVALID_SNAPSHOT_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_SNAPSHOT_ID_MALFORMED, 400)
+      .put(Client.INVALID_SNAPSHOT_UNBOOTABLE, 400)
+      .put(Client.INVALID_SNAPSHOT_NOT_READY, 400)
+      .put(Client.INVALID_PASSWORD_MALFORMED, 400)
+      .put(Client.INVALID_PUBLIC_IP_ADDRESS_NOT_FOUND, 400)
+      .put(Client.INVALID_PUBLIC_IP_ADDRESS_MALFORMED, 400)
+      .put(Client.INVALID_HOST_NAME_MALFORMED, 400)
+      .put(Client.INVALID_IMAGE_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_IMAGE_ID_MALFORMED, 400)
+      .put(Client.INVALID_SECURITY_GROUP_ID_MALFORMED, 400)
+      .put(Client.INVALID_SECURITY_GROUP_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_SOURCE_GROUP_ID_NOT_FOUND, 400)
+      .put(Client.INVALID_SOURCE_GROUP_ID_MALFORMED, 400)
+      .put(Client.INVALID_SECURITY_GROUP_DESCRIPTION, 400)
+      .put(Client.INVALID_IP_PROTOCOL, 400)
+      .put(Client.INVALID_DISK_SIZE_MALFORMED, 400)
+      .put(Client.INVALID_DISK_SIZE_EXCEEDED, 400)
+      .put(Client.INVALID_INTERNET_MAX_BANDWIDTH_MALFORMED, 400)
+      .put(Client.INVALID_SOURCE_CIDR_IP_MALFORMED, 400)
+      .put(Client.INVALID_PORT_RANGE_MALFORMED, 400)
+      .put(Client.INVALID_POLICY_MALFORMED, 400)
+      .put(Client.INVALID_NIC_TYPE_MALFORMED, 400)
 
-      ErrorCode2HttpStatusCode.put(Server.INSUFFICIENT_INSTANCE_CAPACITY, 500);
-      ErrorCode2HttpStatusCode.put(Server.INTERNAL_ERROR, 500);
-      ErrorCode2HttpStatusCode.put(Server.SERVICE_UNAVAILABLE, 503);
-    }
-  };
+      .put(Server.INSUFFICIENT_INSTANCE_CAPACITY, 500)
+      .put(Server.INTERNAL_ERROR, 500)
+      .put(Server.SERVICE_UNAVAILABLE, 503)
+      .build();
 }
