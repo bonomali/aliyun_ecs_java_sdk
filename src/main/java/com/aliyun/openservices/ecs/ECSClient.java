@@ -1,24 +1,14 @@
 package com.aliyun.openservices.ecs;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.aliyun.common.auth.ServiceCredentials;
-import com.aliyun.common.auth.ServiceSignature;
 import com.aliyun.common.comm.DefaultServiceClient;
-import com.aliyun.common.comm.RequestMessage;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
-import com.aliyun.common.utils.HttpUtil;
 import com.aliyun.openservices.ClientConfiguration;
-import com.aliyun.openservices.ClientException;
-import com.aliyun.openservices.HttpMethod;
 import com.aliyun.openservices.ecs.internal.ECSConstants;
 import com.aliyun.openservices.ecs.internal.ECSDatacenterOperation;
 import com.aliyun.openservices.ecs.internal.ECSDiskOperation;
@@ -29,8 +19,13 @@ import com.aliyun.openservices.ecs.internal.ECSNetworkOperation;
 import com.aliyun.openservices.ecs.internal.ECSOtherOperation;
 import com.aliyun.openservices.ecs.internal.ECSSecurityGroupOperation;
 import com.aliyun.openservices.ecs.internal.ECSUtils;
-import com.aliyun.openservices.ecs.internal.SignUtils;
-import com.aliyun.openservices.ecs.model.GeneratePresignedUrlRequest;
+import com.aliyun.openservices.ecs.model.Image;
+import com.aliyun.openservices.ecs.model.InstanceMonitorData;
+import com.aliyun.openservices.ecs.model.InstanceType;
+import com.aliyun.openservices.ecs.model.Region;
+import com.aliyun.openservices.ecs.model.SecurityGroup;
+import com.aliyun.openservices.ecs.model.SecurityGroups;
+import com.aliyun.openservices.ecs.model.Zone;
 
 public class ECSClient implements ECS {
   private ServiceCredentials credentials = new ServiceCredentials();
@@ -189,93 +184,85 @@ public class ECSClient implements ECS {
     return otherOperation;
   }
 
-  public URL generatePresignedUrl(String bucketName, String key, Date expiration)
-      throws ClientException {
-    return generatePresignedUrl(bucketName, key, expiration, HttpMethod.GET);
+
+  @Override
+  public List<Image> describeImages(String regionId, Integer pageNumber, Integer pageSize) {
+    return getImageOperation().describeImages(regionId, pageNumber, pageSize);
   }
 
-  public URL generatePresignedUrl(String bucketName, String key, Date expiration, HttpMethod method)
-      throws ClientException {
-    GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, key);
-    request.setExpiration(expiration);
-    request.setMethod(method);
-
-    return generatePresignedUrl(request);
+  @Override
+  public String allocatePublicIpAddress(String instanceId) {
+    return getNetworkOperation().allocatePublicIpAddress(instanceId);
   }
 
-  public URL generatePresignedUrl(GeneratePresignedUrlRequest request) throws ClientException {
-    CodingUtils.assertParameterNotNull(request, "request");
-    if (request.getBucketName() == null) {
-      throw new IllegalArgumentException(
-          ECSUtils.ECS_RESOURCE_MANAGER.getString("MustSetBucketName"));
-    }
-    if (request.getExpiration() == null) {
-      throw new IllegalArgumentException(
-          ECSUtils.ECS_RESOURCE_MANAGER.getString("MustSetExpiration"));
-    }
+  @Override
+  public void releasePublicIpAddress(String publicIpAddress) {
+    getNetworkOperation().releasePublicIpAddress(publicIpAddress);
+  }
 
-    String bucketName = request.getBucketName();
-    String key = request.getKey();
+  @Override
+  public String createSecurityGroup(String regionId, String description) {
+    return getSecurityGroupOperation().createSecurityGroup(regionId, description);
+  }
 
-    String accessId = this.credentials.getAccessKeyId();
-    String accessKey = this.credentials.getAccessKeySecret();
-    HttpMethod method = request.getMethod() != null ? request.getMethod() : HttpMethod.GET;
+  @Override
+  public void authorizeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
+    getSecurityGroupOperation().authorizeSecurityGroup(securityGroupId, regionId, ipProtocol,
+        portRange, sourceGroupId, sourceCidrId, policy, nicType);
+  }
 
-    String expires = String.valueOf(request.getExpiration().getTime() / 1000L);
-    String resourcePath = ECSUtils.makeResourcePath(key);
+  @Override
+  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId) {
+    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId);
+  }
 
-    RequestMessage requestMessage = new RequestMessage();
-    requestMessage.setEndpoint(ECSUtils.makeBukcetEndpoint(this.endpoint, bucketName));
-    requestMessage.setMethod(method);
-    requestMessage.setResourcePath(resourcePath);
-    requestMessage.addHeader("Date", expires);
-    for (Map.Entry<String, String> h : request.getUserMetadata().entrySet()) {
-      requestMessage.addHeader(new StringBuilder().append("x-oss-meta-")
-          .append((String) h.getKey()).toString(), (String) h.getValue());
-    }
+  @Override
+  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId,
+      String nicType) {
+    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId,
+        nicType);
+  }
 
-    Map<String, String> responseHeadersParams =
-        ECSUtils.getResponseHeaderParameters(request.getResponseHeaders());
+  @Override
+  public SecurityGroups describeSecurityGroups(String regionId) {
+    return getSecurityGroupOperation().describeSecurityGroups(regionId);
+  }
 
-    if (responseHeadersParams.size() > 0) {
-      requestMessage.setParameters(responseHeadersParams);
-    }
+  @Override
+  public SecurityGroups describeSecurityGroups(String regionId, Integer pageNumber, Integer pageSize) {
+    return getSecurityGroupOperation().describeSecurityGroups(regionId, pageNumber, pageSize);
+  }
 
-    String canonicalResource =
-        new StringBuilder().append("/").append(bucketName != null ? bucketName : "")
-            .append(key != null ? new StringBuilder().append("/").append(key).toString() : "")
-            .toString();
+  @Override
+  public void revokeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
+    getSecurityGroupOperation().revokeSecurityGroup(securityGroupId, regionId, ipProtocol,
+        portRange, sourceGroupId, sourceCidrId, policy, nicType);
+  }
 
-    String canonicalString =
-        SignUtils.buildCanonicalString(method.toString(), canonicalResource, requestMessage,
-            expires);
+  @Override
+  public void deleteSecurityGroup(String securityGroupId, String regionId) {
+    getSecurityGroupOperation().deleteSecurityGroup(securityGroupId, regionId);
+  }
 
-    String signature = ServiceSignature.create().computeSignature(accessKey, canonicalString);
+  @Override
+  public List<Region> describeRegions() {
+    return getDatacenterOperation().describeRegions();
+  }
 
-    Map<String, String> params = new HashMap();
-    params.put("Expires", expires);
-    params.put("ECSAccessKeyId", accessId);
-    params.put("Signature", signature);
-    params.putAll(responseHeadersParams);
+  @Override
+  public List<Zone> describeZones() {
+    return getDatacenterOperation().describeZones();
+  }
 
-    String queryString;
-    try {
-      queryString = HttpUtil.paramToQueryString(params, "utf-8");
-    } catch (UnsupportedEncodingException e) {
-      throw new ClientException(ECSUtils.ECS_RESOURCE_MANAGER.getString("FailedToEncodeUri"), e);
-    }
+  @Override
+  public InstanceMonitorData getMonitorData(String regionId, String instanceId) {
+    return getMonitorOperation().getMonitorData(regionId, instanceId);
+  }
 
-    String url = requestMessage.getEndpoint().toString();
-    if (!url.endsWith("/")) {
-      url = new StringBuilder().append(url).append("/").toString();
-    }
-    url =
-        new StringBuilder().append(url).append(resourcePath).append("?").append(queryString)
-            .toString();
-    try {
-      return new URL(url);
-    } catch (MalformedURLException e) {
-      throw new ClientException(e);
-    }
+  @Override
+  public List<InstanceType> describeInstanceTypes() {
+    return getOtherOperation().describeInstanceTypes();
   }
 }
