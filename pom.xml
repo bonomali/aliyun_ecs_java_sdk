@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.aliyun.demo.ecs</groupId>
-	<artifactId>ecs-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.aliyun.openservices</groupId>
+	<artifactId>aliyun-ecs-sdk</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>ecs-demo</name>
-	<url>http://maven.apache.org</url>
+	<name>aliyun-ecs-sdk</name>
+	<url>http://maven.apache.org/</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
