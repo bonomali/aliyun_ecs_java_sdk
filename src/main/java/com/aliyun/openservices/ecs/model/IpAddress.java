@@ -1,21 +1,20 @@
 package com.aliyun.openservices.ecs.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.net.util.SubnetUtils;
 import org.apache.commons.net.util.SubnetUtils.SubnetInfo;
 
 public class IpAddress {
+  @XmlElement(name = "IpAddress")
   private String ipAddress;
-  SubnetUtils utils;
-  SubnetInfo subnetInfo;
 
-  IpAddress(String ipAddress) {
+  public String getIpAddress() {
+    return ipAddress;
+  }
+
+  public void setIpAddress(String ipAddress) {
     this.ipAddress = ipAddress;
-    this.utils = new SubnetUtils(ipAddress);
-    this.utils.setInclusiveHostCount(true); // For use w/ /32 CIDR subnets
-    this.subnetInfo = this.utils.getInfo();
-  }
-
-  public boolean isInRange(String address) {
-    return this.subnetInfo.isInRange(address);
-  }
+  }  
 }

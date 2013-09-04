@@ -8,7 +8,9 @@ import java.util.Map;
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.CreateSecurityGroupResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceDisksResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeSecurityGroupAttributeResult;
@@ -30,7 +32,8 @@ public class ECSSecurityGroupOperation extends ECSOperation {
     super(endpoint, client, cred);
   }
 
-  public String createSecurityGroup(String regionId, String description) {
+  public String createSecurityGroup(String regionId, String description) throws ECSException,
+      ClientException {
     CodingUtils.assertStringNotNullOrEmpty(regionId, "regionId");
     CodingUtils.assertStringNotNullOrEmpty(description, "description");
 
@@ -46,7 +49,8 @@ public class ECSSecurityGroupOperation extends ECSOperation {
   }
 
   public void authorizeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
-      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType)
+      throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty("securityGroupId", securityGroupId);
     CodingUtils.assertStringNotNullOrEmpty("regionId", regionId);
     CodingUtils.assertStringNotNullOrEmpty("ipProtocol", ipProtocol);
@@ -69,13 +73,14 @@ public class ECSSecurityGroupOperation extends ECSOperation {
     invokeNoResult(ACTION_AUTHORIZE_SECURITY_GROUP, HttpMethod.GET, params);
   }
 
-  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId) {
+  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId)
+      throws ECSException, ClientException {
     String nicType = "internet"; // or "intranet"
     return describeSecurityGroupAttribute(securityGroupId, regionId, nicType);
   }
 
   public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId,
-      String nicType) {
+      String nicType) throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty("securityGroupId", securityGroupId);
     CodingUtils.assertStringNotNullOrEmpty("regionId", regionId);
     CodingUtils.assertStringNotNullOrEmpty("nicType", nicType);
@@ -97,13 +102,16 @@ public class ECSSecurityGroupOperation extends ECSOperation {
     return describeSecurityGroups(regionId, 1, 10);
   }
 
-  public SecurityGroups describeSecurityGroups(String regionId, Integer pageNumber, Integer pageSize) {
+  public SecurityGroups describeSecurityGroups(String regionId, Integer pageNumber, Integer pageSize)
+      throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty(regionId, "regionId");
     CodingUtils.assertParameterNotNull(pageNumber, "pageNumber");
     CodingUtils.assertParameterNotNull(pageSize, "pageSize");
 
     Map<String, String> params = new LinkedHashMap<>();
     params.put("RegionId", regionId);
+    params.put("PageNumber", pageNumber.toString());
+    params.put("PageSize", pageSize.toString());
 
     DescribeSecurityGroupsResult result =
         (DescribeSecurityGroupsResult) invoke(ACTION_DESCRIBE_SECURITY_GROUPS, HttpMethod.GET,
@@ -113,7 +121,8 @@ public class ECSSecurityGroupOperation extends ECSOperation {
   }
 
   public void revokeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
-      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType)
+      throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty("securityGroupId", securityGroupId);
     CodingUtils.assertStringNotNullOrEmpty("regionId", regionId);
     CodingUtils.assertStringNotNullOrEmpty("ipProtocol", ipProtocol);
@@ -136,7 +145,8 @@ public class ECSSecurityGroupOperation extends ECSOperation {
     invokeNoResult(ACTION_REVOKE_SECURITY_GROUP, HttpMethod.GET, params);
   }
 
-  public void deleteSecurityGroup(String securityGroupId, String regionId) {
+  public void deleteSecurityGroup(String securityGroupId, String regionId) throws ECSException,
+      ClientException {
     CodingUtils.assertStringNotNullOrEmpty("securityGroupId", securityGroupId);
     CodingUtils.assertStringNotNullOrEmpty("regionId", regionId);
 

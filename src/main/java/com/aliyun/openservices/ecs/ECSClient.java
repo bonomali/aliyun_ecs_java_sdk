@@ -9,6 +9,7 @@ import com.aliyun.common.comm.DefaultServiceClient;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
 import com.aliyun.openservices.ClientConfiguration;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.ecs.internal.ECSConstants;
 import com.aliyun.openservices.ecs.internal.ECSDatacenterOperation;
 import com.aliyun.openservices.ecs.internal.ECSDiskOperation;
@@ -19,8 +20,11 @@ import com.aliyun.openservices.ecs.internal.ECSNetworkOperation;
 import com.aliyun.openservices.ecs.internal.ECSOtherOperation;
 import com.aliyun.openservices.ecs.internal.ECSSecurityGroupOperation;
 import com.aliyun.openservices.ecs.internal.ECSUtils;
+import com.aliyun.openservices.ecs.model.Disk;
 import com.aliyun.openservices.ecs.model.Image;
+import com.aliyun.openservices.ecs.model.InstanceAttribute;
 import com.aliyun.openservices.ecs.model.InstanceMonitorData;
+import com.aliyun.openservices.ecs.model.InstanceStatus;
 import com.aliyun.openservices.ecs.model.InstanceType;
 import com.aliyun.openservices.ecs.model.Region;
 import com.aliyun.openservices.ecs.model.SecurityGroup;
@@ -67,6 +71,165 @@ public class ECSClient implements ECS {
     this.serviceClient =
         new DefaultServiceClient(config != null ? config : new ClientConfiguration());
   }
+
+  @Override
+  public void startInstance(String instanceId) throws ECSException, ClientException {
+    getInstanceOperation().startInstance(instanceId);
+  }
+
+  @Override
+  public void stopInstance(String instanceId) throws ECSException, ClientException {
+    getInstanceOperation().stopInstance(instanceId);
+  }
+
+  @Override
+  public void stopInstance(String instanceId, String forceStop) throws ECSException,
+      ClientException {
+    getInstanceOperation().stopInstance(instanceId, forceStop);
+  }
+
+  @Override
+  public void rebootInstance(String instanceId) throws ECSException, ClientException {
+    getInstanceOperation().rebootInstance(instanceId);
+  }
+
+  @Override
+  public void rebootInstance(String instanceId, String forceStop) throws ECSException,
+      ClientException {
+    getInstanceOperation().rebootInstance(instanceId, forceStop);
+  }
+
+  @Override
+  public void resetInstance(String instanceId) throws ECSException, ClientException {
+    getInstanceOperation().resetInstance(instanceId);
+  }
+
+  @Override
+  public void resetInstance(String instanceId, String imageId, String diskType)
+      throws ECSException, ClientException {
+    getInstanceOperation().resetInstance(instanceId, imageId, diskType);
+  }
+
+  @Override
+  public void modifyInstanceAttribute(String instanceId, String password, String hostName,
+      String securityGroupId) throws ECSException, ClientException {
+    getInstanceOperation().modifyInstanceAttribute(instanceId, password, hostName, securityGroupId);
+  }
+
+  @Override
+  public InstanceStatus describeInstanceStatus(String regionId, String zoneId) throws ECSException,
+      ClientException {
+    return getInstanceOperation().describeInstanceStatus(regionId, zoneId);
+  }
+
+  @Override
+  public InstanceStatus describeInstanceStatus(String regionId, String zoneId, Integer pageNumber,
+      Integer pageSize) throws ECSException, ClientException {
+    return getInstanceOperation().describeInstanceStatus(regionId, zoneId, pageNumber, pageSize);
+  }
+
+  @Override
+  public InstanceAttribute describeInstanceAttribute(String instanceId) throws ECSException,
+      ClientException {
+    return getInstanceOperation().describeInstanceAttribute(instanceId);
+  }
+
+  @Override
+  public List<Disk> describeInstanceDisks(String instanceId) throws ECSException, ClientException {
+    return getDiskOperation().describeInstanceDisks(instanceId);
+  }
+
+  @Override
+  public List<Image> describeImages(String regionId, Integer pageNumber, Integer pageSize)
+      throws ECSException, ClientException {
+    return getImageOperation().describeImages(regionId, pageNumber, pageSize);
+  }
+
+  @Override
+  public String allocatePublicIpAddress(String instanceId) throws ECSException, ClientException {
+    return getNetworkOperation().allocatePublicIpAddress(instanceId);
+  }
+
+  @Override
+  public void releasePublicIpAddress(String publicIpAddress) throws ECSException, ClientException {
+    getNetworkOperation().releasePublicIpAddress(publicIpAddress);
+  }
+
+  @Override
+  public String createSecurityGroup(String regionId, String description) throws ECSException,
+      ClientException {
+    return getSecurityGroupOperation().createSecurityGroup(regionId, description);
+  }
+
+  @Override
+  public void authorizeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType)
+      throws ECSException, ClientException {
+    getSecurityGroupOperation().authorizeSecurityGroup(securityGroupId, regionId, ipProtocol,
+        portRange, sourceGroupId, sourceCidrId, policy, nicType);
+  }
+
+  @Override
+  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId)
+      throws ECSException, ClientException {
+    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId);
+  }
+
+  @Override
+  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId,
+      String nicType) throws ECSException, ClientException {
+    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId,
+        nicType);
+  }
+
+  @Override
+  public SecurityGroups describeSecurityGroups(String regionId) throws ECSException,
+      ClientException {
+    return getSecurityGroupOperation().describeSecurityGroups(regionId);
+  }
+
+  @Override
+  public SecurityGroups describeSecurityGroups(String regionId, Integer pageNumber, Integer pageSize)
+      throws ECSException, ClientException {
+    return getSecurityGroupOperation().describeSecurityGroups(regionId, pageNumber, pageSize);
+  }
+
+  @Override
+  public void revokeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
+      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType)
+      throws ECSException, ClientException {
+    getSecurityGroupOperation().revokeSecurityGroup(securityGroupId, regionId, ipProtocol,
+        portRange, sourceGroupId, sourceCidrId, policy, nicType);
+  }
+
+  @Override
+  public void deleteSecurityGroup(String securityGroupId, String regionId) throws ECSException,
+      ClientException {
+    getSecurityGroupOperation().deleteSecurityGroup(securityGroupId, regionId);
+  }
+
+  @Override
+  public List<Region> describeRegions() throws ECSException, ClientException {
+    return getDatacenterOperation().describeRegions();
+  }
+
+  @Override
+  public List<Zone> describeZones() throws ECSException, ClientException {
+    return getDatacenterOperation().describeZones();
+  }
+
+  @Override
+  public InstanceMonitorData getMonitorData(String regionId, String instanceId)
+      throws ECSException, ClientException {
+    return getMonitorOperation().getMonitorData(regionId, instanceId);
+  }
+
+  @Override
+  public List<InstanceType> describeInstanceTypes() throws ECSException, ClientException {
+    return getOtherOperation().describeInstanceTypes();
+  }
+
+
 
   public URI getEndpoint() {
     return this.endpoint;
@@ -182,87 +345,5 @@ public class ECSClient implements ECS {
       }
     }
     return otherOperation;
-  }
-
-
-  @Override
-  public List<Image> describeImages(String regionId, Integer pageNumber, Integer pageSize) {
-    return getImageOperation().describeImages(regionId, pageNumber, pageSize);
-  }
-
-  @Override
-  public String allocatePublicIpAddress(String instanceId) {
-    return getNetworkOperation().allocatePublicIpAddress(instanceId);
-  }
-
-  @Override
-  public void releasePublicIpAddress(String publicIpAddress) {
-    getNetworkOperation().releasePublicIpAddress(publicIpAddress);
-  }
-
-  @Override
-  public String createSecurityGroup(String regionId, String description) {
-    return getSecurityGroupOperation().createSecurityGroup(regionId, description);
-  }
-
-  @Override
-  public void authorizeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
-      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
-    getSecurityGroupOperation().authorizeSecurityGroup(securityGroupId, regionId, ipProtocol,
-        portRange, sourceGroupId, sourceCidrId, policy, nicType);
-  }
-
-  @Override
-  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId) {
-    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId);
-  }
-
-  @Override
-  public SecurityGroup describeSecurityGroupAttribute(String securityGroupId, String regionId,
-      String nicType) {
-    return getSecurityGroupOperation().describeSecurityGroupAttribute(securityGroupId, regionId,
-        nicType);
-  }
-
-  @Override
-  public SecurityGroups describeSecurityGroups(String regionId) {
-    return getSecurityGroupOperation().describeSecurityGroups(regionId);
-  }
-
-  @Override
-  public SecurityGroups describeSecurityGroups(String regionId, Integer pageNumber, Integer pageSize) {
-    return getSecurityGroupOperation().describeSecurityGroups(regionId, pageNumber, pageSize);
-  }
-
-  @Override
-  public void revokeSecurityGroup(String securityGroupId, String regionId, String ipProtocol,
-      String portRange, String sourceGroupId, String sourceCidrId, String policy, String nicType) {
-    getSecurityGroupOperation().revokeSecurityGroup(securityGroupId, regionId, ipProtocol,
-        portRange, sourceGroupId, sourceCidrId, policy, nicType);
-  }
-
-  @Override
-  public void deleteSecurityGroup(String securityGroupId, String regionId) {
-    getSecurityGroupOperation().deleteSecurityGroup(securityGroupId, regionId);
-  }
-
-  @Override
-  public List<Region> describeRegions() {
-    return getDatacenterOperation().describeRegions();
-  }
-
-  @Override
-  public List<Zone> describeZones() {
-    return getDatacenterOperation().describeZones();
-  }
-
-  @Override
-  public InstanceMonitorData getMonitorData(String regionId, String instanceId) {
-    return getMonitorOperation().getMonitorData(regionId, instanceId);
-  }
-
-  @Override
-  public List<InstanceType> describeInstanceTypes() {
-    return getOtherOperation().describeInstanceTypes();
   }
 }

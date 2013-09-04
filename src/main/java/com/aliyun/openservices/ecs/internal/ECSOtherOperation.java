@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceTypesResult;
 import com.aliyun.openservices.ecs.internal.model.InstanceTypesListResult;
 import com.aliyun.openservices.ecs.model.InstanceType;
@@ -20,7 +22,7 @@ public class ECSOtherOperation extends ECSOperation {
     // TODO Auto-generated constructor stub
   }
 
-  public List<InstanceType> describeInstanceTypes() {
+  public List<InstanceType> describeInstanceTypes() throws ECSException, ClientException {
     DescribeInstanceTypesResult result =
         (DescribeInstanceTypesResult) invoke(ACTION_DESCRIBE_INSTANCE_TYPES, HttpMethod.GET, null,
             DescribeInstanceTypesResult.class);

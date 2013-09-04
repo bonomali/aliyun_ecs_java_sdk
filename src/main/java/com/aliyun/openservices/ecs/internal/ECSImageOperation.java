@@ -8,7 +8,9 @@ import java.util.Map;
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.DescribeImagesResult;
 import com.aliyun.openservices.ecs.model.Image;
 
@@ -19,7 +21,8 @@ public class ECSImageOperation extends ECSOperation {
     super(endpoint, client, cred);
   }
 
-  public List<Image> describeImages(String regionId, Integer pageNumber, Integer pageSize) {
+  public List<Image> describeImages(String regionId, Integer pageNumber, Integer pageSize)
+      throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty(regionId, "regionId");
     CodingUtils.assertParameterNotNull(pageNumber, "pageNumber");
     CodingUtils.assertParameterNotNull(pageSize, "pageSize");

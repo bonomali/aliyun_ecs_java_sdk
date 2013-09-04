@@ -9,7 +9,9 @@ import java.util.Map;
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.AllocatePublicIpAddressResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceTypesResult;
 import com.aliyun.openservices.ecs.model.InstanceType;
@@ -23,7 +25,7 @@ public class ECSNetworkOperation extends ECSOperation {
     // TODO Auto-generated constructor stub
   }
 
-  public String allocatePublicIpAddress(String instanceId) {
+  public String allocatePublicIpAddress(String instanceId) throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty(instanceId, "instanceId");
 
     Map<String, String> params = new LinkedHashMap<>();
@@ -36,7 +38,7 @@ public class ECSNetworkOperation extends ECSOperation {
     return result.IpAddress;
   }
 
-  public void releasePublicIpAddress(String publicIpAddress) {
+  public void releasePublicIpAddress(String publicIpAddress) throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty(publicIpAddress, "publicIpAddress");
 
     Map<String, String> params = new LinkedHashMap<>();

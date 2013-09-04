@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.DescribeRegionsResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeZonesResult;
 import com.aliyun.openservices.ecs.model.Region;
@@ -19,7 +21,7 @@ public class ECSDatacenterOperation extends ECSOperation {
     super(endpoint, client, cred);
   }
 
-  public List<Region> describeRegions() {
+  public List<Region> describeRegions() throws ECSException, ClientException {
     DescribeRegionsResult result =
         (DescribeRegionsResult) invoke(ACTION_DESCRIBE_REGIONS, HttpMethod.GET, null,
             DescribeRegionsResult.class);
@@ -27,7 +29,7 @@ public class ECSDatacenterOperation extends ECSOperation {
     return result.getRegions();
   }
 
-  public List<Zone> describeZones() {
+  public List<Zone> describeZones() throws ECSException, ClientException {
     DescribeZonesResult result =
         (DescribeZonesResult) invoke(ACTION_DESCRIBE_ZONES, HttpMethod.GET, null,
             DescribeZonesResult.class);

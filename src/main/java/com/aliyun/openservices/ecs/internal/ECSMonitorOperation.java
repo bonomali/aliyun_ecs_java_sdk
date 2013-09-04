@@ -8,7 +8,9 @@ import java.util.Map;
 import com.aliyun.common.auth.ServiceCredentials;
 import com.aliyun.common.comm.ServiceClient;
 import com.aliyun.common.utils.CodingUtils;
+import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
+import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceDisksResult;
 import com.aliyun.openservices.ecs.internal.model.MonitorDataResult;
 import com.aliyun.openservices.ecs.model.Disk;
@@ -21,7 +23,8 @@ public class ECSMonitorOperation extends ECSOperation {
     super(endpoint, client, cred);
   }
 
-  public InstanceMonitorData getMonitorData(String regionId, String instanceId) {
+  public InstanceMonitorData getMonitorData(String regionId, String instanceId)
+      throws ECSException, ClientException {
     CodingUtils.assertStringNotNullOrEmpty(regionId, "regionId");
     CodingUtils.assertStringNotNullOrEmpty(instanceId, "instanceId");
 
