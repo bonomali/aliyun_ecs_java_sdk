@@ -17,7 +17,6 @@ public class ECSDatacenterOperation extends ECSOperation {
 
   public ECSDatacenterOperation(URI endpoint, ServiceClient client, ServiceCredentials cred) {
     super(endpoint, client, cred);
-    // TODO Auto-generated constructor stub
   }
 
   public List<Region> describeRegions() {

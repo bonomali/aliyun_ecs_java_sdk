@@ -33,11 +33,7 @@ public class ECSNetworkOperation extends ECSOperation {
         (AllocatePublicIpAddressResult) invoke(ACTION_ALLOCATE_PUBLIC_IP_ADDRESS, HttpMethod.GET,
             params, AllocatePublicIpAddressResult.class);
 
-    String ipAddress = null;
-    if (result.IpAddress != null) {
-      ipAddress = result.IpAddress;
-    }
-    return ipAddress;
+    return result.IpAddress;
   }
 
   public void releasePublicIpAddress(String publicIpAddress) {
