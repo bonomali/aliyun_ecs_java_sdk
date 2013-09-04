@@ -20,5 +20,5 @@ public class DescribeInstanceDisksResult extends ECSResult {
 
   public void setDisks(List<Disk> disks) {
     this.disks = disks;
-  }  
+  } 
 }
