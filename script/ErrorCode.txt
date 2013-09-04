@@ -1,0 +1,54 @@
+UnsupportedOperation
+NoSuchVersion
+MissingParameter
+InvalidParameter
+Throttling
+InvalidAccessKeyId.NotFound
+Forbidden
+SignatureDoesNotMatch
+SignatureNonceUsed
+IdempotentParameterMismatch
+    IncorrectInstanceStatus
+    InstanceMountedSnapshot
+    InvalidSecurityGroupStatus
+    InvalidSecurityGroup.InUse
+    SecurityGroupLimitExceeded
+    SecurityGroupRuleLimitExceeded
+    SecurityGroupInstanceLimitExceed
+    InvalidSnapshot.InUse
+    InvalidInstanceId.NotFound
+    InvalidInstanceId.Malformed
+    InvalidInstanceType.NotFound
+    InvalidRegionId.NotFound
+    InvalidZoneId.NotFound
+    InvalidDiskId.NotFound
+    InvalidDiskId.Malformed
+    InvalidDisk.NotReady
+    InvalidDiskType.NotFound
+    InvalidSnapshotId.NotFound
+    InvalidSnapshotId.Malformed
+    InvalidSnapshot.Unbootable
+    InvalidSnapshot.NotReady
+    InvalidPassword.Malformed
+    InvalidPublicIpAddress.NotFound
+    InvalidPublicIpAddress.Malformed
+    InvalidHostName.Malformed
+    InvalidImageId.NotFound
+    InvalidImageId.Malformed
+    InvalidSecurityGroupId.Malformed
+    InvalidSecurityGroupId.NotFound
+    InvalidSourceGroupId.NotFound
+    InvalidSourceGroupId.Malformed
+    InvalidSecurityGroupDescription
+    InvalidIpProtocol
+    InvalidDiskSize.Malformed
+    InvalidDiskSize.Exceeded
+    InvalidInternetMaxBandwidth.Malformed
+    InvalidSourceCidrIp.Malformed
+    InvalidPortRange.Malformed
+    InvalidPolicy.Malformed
+    InvalidNicType.Malformed
+	
+    InsufficientInstanceCapacity
+    InternalError
+    ServiceUnavailable
