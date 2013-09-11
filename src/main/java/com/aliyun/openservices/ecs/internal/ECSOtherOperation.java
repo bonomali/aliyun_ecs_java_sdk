@@ -10,9 +10,7 @@ import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
 import com.aliyun.openservices.ecs.ECSException;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceTypesResult;
-import com.aliyun.openservices.ecs.internal.model.InstanceTypesListResult;
 import com.aliyun.openservices.ecs.model.InstanceType;
-import com.aliyun.openservices.ots.internal.model.ListTableGroupResult;
 
 public class ECSOtherOperation extends ECSOperation {
   private static final String ACTION_DESCRIBE_INSTANCE_TYPES = "DescribeInstanceTypes";

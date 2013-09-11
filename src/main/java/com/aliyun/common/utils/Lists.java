@@ -9,7 +9,7 @@ public class Lists {
     }
     java.util.List<T> list = new LinkedList();
     for (java.util.Iterator i$ = it.iterator(); i$.hasNext();) {
-      T i = i$.next();
+      T i = (T) i$.next();
       list.add(i);
     }
     return list;

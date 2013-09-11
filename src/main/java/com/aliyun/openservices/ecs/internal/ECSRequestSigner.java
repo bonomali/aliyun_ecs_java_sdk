@@ -55,6 +55,7 @@ public class ECSRequestSigner implements RequestSigner {
 
   /*
    * (non-Javadoc) Based on com.aliyun.openservices.oss.OSSRequestSigner
+   * 
    * @see com.aliyun.common.auth.RequestSigner#sign(com.aliyun.common.comm.RequestMessage)
    */
   // public void sign(RequestMessage request) throws ClientException {
@@ -74,10 +75,17 @@ public class ECSRequestSigner implements RequestSigner {
 
   /*
    * (non-Javadoc) Based on com.aliyun.openservices.ots.OTSRequestSigner
+   * 
    * @see com.aliyun.common.auth.RequestSigner#sign(com.aliyun.common.comm.RequestMessage)
    */
   public void sign(RequestMessage request) throws ClientException {
-    addRequiredParameters(this.ecsAction, request.getParameters(), this.credentials);
+    try {
+      addRequiredParameters(this.ecsAction, request.getParameters(), this.credentials);
+    } catch (UnsupportedEncodingException e1) {
+      // TODO Auto-generated catch block
+      // e1.printStackTrace();
+      throw (new ClientException(e1.getMessage(), e1));
+    }
     try {
       addSignature(request.getParameters(), this.credentials);
     } catch (UnsupportedEncodingException e) {

@@ -72,7 +72,7 @@ public abstract class ServiceClient
     try
     {
       handleResponse(response, context.getResponseHandlers());
-      return parser.getObject(response);
+      return (T) parser.getObject(response);
     } catch (ResultParseException e) {
       throw new ClientException(rm.getString("FailedToParseResponse"), e);
     }
@@ -225,7 +225,7 @@ public abstract class ServiceClient
     throws ClientException
   {
     int scale = 300;
-    long delay = Math.pow(2.0D, retries) * scale;
+    long delay = (long) (Math.pow(2.0D, retries) * scale);
     
     log.debug("Retriable error detected, will retry in " + delay + "ms, attempt number: " + retries);
     try

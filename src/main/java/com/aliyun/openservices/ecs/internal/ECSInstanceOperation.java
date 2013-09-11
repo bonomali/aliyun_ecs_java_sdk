@@ -1,7 +1,6 @@
 package com.aliyun.openservices.ecs.internal;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,12 +10,10 @@ import com.aliyun.common.utils.CodingUtils;
 import com.aliyun.openservices.ClientException;
 import com.aliyun.openservices.HttpMethod;
 import com.aliyun.openservices.ecs.ECSException;
-import com.aliyun.openservices.ecs.internal.model.CreateSecurityGroupResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceAttributeResult;
 import com.aliyun.openservices.ecs.internal.model.DescribeInstanceStatusResult;
 import com.aliyun.openservices.ecs.model.InstanceAttribute;
 import com.aliyun.openservices.ecs.model.InstanceStatus;
-import com.aliyun.openservices.ots.internal.OTSUtil;
 
 public class ECSInstanceOperation extends ECSOperation {
   private static final String ACTION_START_INSTANCE = "StartInstance";

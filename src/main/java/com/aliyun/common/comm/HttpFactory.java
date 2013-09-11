@@ -90,7 +90,6 @@ class HttpFactory {
 
       httpRequest = postMethod;
     } else {
-      HttpRequestBase httpRequest;
       if (method == HttpMethod.PUT) {
         HttpPut putMethod = new HttpPut(uri);
 
@@ -100,15 +99,12 @@ class HttpFactory {
 
         httpRequest = putMethod;
       } else {
-        HttpRequestBase httpRequest;
         if (method == HttpMethod.GET) {
           httpRequest = new HttpGet(uri);
         } else {
-          HttpRequestBase httpRequest;
           if (method == HttpMethod.DELETE) {
             httpRequest = new HttpDelete(uri);
           } else {
-            HttpRequestBase httpRequest;
             if (method == HttpMethod.HEAD) {
               httpRequest = new HttpHead(uri);
             } else
@@ -118,7 +114,6 @@ class HttpFactory {
         }
       }
     }
-    HttpRequestBase httpRequest;
     configureRequestHeaders(request, context, httpRequest);
 
     return httpRequest;
