@@ -34,5 +34,3 @@ By using this software in any fashion, you are agreeing to be bound by
 the terms of this license.
 You must not remove this notice, or any other, from this software.
 
-## Statistics
-[CNZZ](<script src='http://w.cnzz.com/q_stat.php?id=1000075316&l=3' language='JavaScript'></script>)
