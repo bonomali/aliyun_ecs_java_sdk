@@ -35,4 +35,4 @@ the terms of this license.
 You must not remove this notice, or any other, from this software.
 
 ## Statistics
-[CNZZ](<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000075316'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1000075316%26l%3D2' type='text/javascript'%3E%3C/script%3E"));</script>)
+[CNZZ](<script src='http://w.cnzz.com/q_stat.php?id=1000075316&l=3' language='JavaScript'></script>)
