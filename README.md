@@ -13,9 +13,9 @@ aliyun_ecs_java_sdk
 
 ## Getting help
 
-Feel free to ask questions on [Aliyun ECS BBS: ](http://bbs.aliyun.com/thread.php?fid=127)
+Feel free to ask questions on [Aliyun ECS BBS](http://bbs.aliyun.com/thread.php?fid=127).
 
-You can also come to Aliyun_ecs_java_sdk project website to [create a new issue](https://github.com/kloudkl/aliyun_ecs_java_sdk/issues/) and [send me a pull request](https://github.com/kloudkl/aliyun_ecs_java_sdk/pulls/). 
+You can also come to Aliyun_ecs_java_sdk project website to [create a new issue](https://github.com/kloudkl/aliyun_ecs_java_sdk/issues/) and [send a pull request](https://github.com/kloudkl/aliyun_ecs_java_sdk/pulls/). 
 
 ## Acknowledgements
 
