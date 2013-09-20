@@ -1,7 +1,7 @@
 aliyun_ecs_java_sdk
 ===================
 
-Aliyun_ecs_java_sdk is the Java SDK for Aliyun ECS (Elastic Compute Service). Aliyun_ecs_java_sdk is simple, can be used with any JVM programming language, [is used by many companies](https://github.com/kloudkl/aliyun_ecs_java_sdk/wiki/Powered-By), and is a lot of fun to use!
+[Aliyun_ecs_java_sdk](https://github.com/kloudkl/aliyun_ecs_java_sdk) is the Java SDK for [Aliyun ECS (Elastic Compute Service)](http://www.aliyun.com/product/ecs/). Aliyun_ecs_java_sdk is simple, can be used with any JVM programming language, and is a lot of fun to use!
 
 ## Contributors
 
@@ -9,13 +9,13 @@ Aliyun_ecs_java_sdk is the Java SDK for Aliyun ECS (Elastic Compute Service). Al
 
 ## Documentation
 
-Documentation and tutorials can be found on the [Aliyun_ecs_java_sdk wiki](http://github.com/kloudkl/aliyun_ecs_java_sdk/wiki).
+[Official API Documentation](http://dev.aliyun.com/read.php?tid=41) and [API specifications](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf) can be found on the [Aliyun ECS API](http://dev.aliyun.com/read.php?tid=41) and the [Aliyun Elastic Compute Service API Reference](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf).
 
 ## Getting help
 
-Feel free to ask questions on Aliyun_ecs_java_sdk's mailing list: http://groups.google.com/group/aliyun_ecs_java_sdk-user
+Feel free to ask questions on [Aliyun ECS BBS: ](http://bbs.aliyun.com/thread.php?fid=127)
 
-You can also come to the #aliyun_ecs_java_sdk-user room on [freenode](http://freenode.net/). You can usually find a Aliyun_ecs_java_sdk developer there to help you out.
+You can also come to Aliyun_ecs_java_sdk project website to [create a new issue](https://github.com/kloudkl/aliyun_ecs_java_sdk/issues/) and [send me a pull request](https://github.com/kloudkl/aliyun_ecs_java_sdk/pulls/). 
 
 ## Acknowledgements
 
