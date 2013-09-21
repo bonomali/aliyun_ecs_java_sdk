@@ -45,67 +45,67 @@ Aliyun ECS Java SDK
 
 4、	使用阿里云产品后解决了什么问题
 
-  本项目与官方API Java SDK高度一致，为应用开发者提供了调用Aliyun ECS所有各种服务功能所必需的API接口，简化了其项目代码，提高了开发效率。开发者主要需要创建ECSClient实例，并调用其各接口即可简单方便地实现与ECS服务的交互。
+  本项目与官方API Java SDK高度一致，为应用开发者提供了调用Aliyun ECS所有各种服务功能所必需的API接口，简化了其项目代码，提高了开发效率。开发者主要需要创建[ECSClient](https://github.com/kloudkl/aliyun_ecs_java_sdk/blob/master/src/main/java/com/aliyun/openservices/ecs/ECSClient.java)实例，并调用其各接口即可简单方便地实现与ECS服务的交互。
 
   本SDK提供的接口功能如下：
 
-a)	实例相关接口
+1.	实例相关接口
 
-  i.	启动实例startInstance
+  1.	启动实例startInstance
 
-  ii.	停止实例stopInstance
+  2.	停止实例stopInstance
 
-  iii.	重启实例rebootInstance
+  3.	重启实例rebootInstance
 
-  iv.	重置实例resetInstance
+  4.	重置实例resetInstance
 
-  v.	修改实例属性modifyInstanceAttribute
+  5.	修改实例属性modifyInstanceAttribute
 
-  vi.	查询实例状态describeInstanceStatus
+  6.	查询实例状态describeInstanceStatus
 
-  vii.	查询实例信息describeInstanceAttribute
+  7.	查询实例信息describeInstanceAttribute
 
-b)	磁盘相关接口
+2.	磁盘相关接口
 
-  i.	查询实例磁盘列表describeInstanceDisks
+  1.	查询实例磁盘列表describeInstanceDisks
 
-c)	镜像相关接口
+3.	镜像相关接口
 
-  i.	查询可用镜像describeImages
+  1.	查询可用镜像describeImages
 
-d)	网络相关接口
+4.	网络相关接口
 
-  i.	分配公网IP地址allocatePublicIpAddress
+  1.	分配公网IP地址allocatePublicIpAddress
 
-  ii.	释放公网IP地址releasePublicIpAddress
+  2.	释放公网IP地址releasePublicIpAddress
 
-e)	安全组相关接口
+5.	安全组相关接口
 
-  i.	创建安全组createSecurityGroup
+  1.	创建安全组createSecurityGroup
 
-  ii.	授权安全组权限authorizeSecurityGroup
+  2.	授权安全组权限authorizeSecurityGroup
 
-  iii.	查询安全组规则describeSecurityGroupAttribute
+  3.	查询安全组规则describeSecurityGroupAttribute
 
-  iv.	查询安全组列表describeSecurityGroups
+  4.	查询安全组列表describeSecurityGroups
 
-  v.	撤销安全组规则revokeSecurityGroup
+  5.	撤销安全组规则revokeSecurityGroup
 
-  vi.	删除安全组deleteSecurityGroup
+  6.	删除安全组deleteSecurityGroup
 
-f)	数据中心相关接口
+6.	数据中心相关接口
 
-  i.	查询可用数据中心describeRegions
+  1.	查询可用数据中心describeRegions
 
-  ii.	查询Zone信息describeZones
+  2.	查询Zone信息describeZones
 
-g)	监控相关接口
+7.	监控相关接口
 
-  i.	查看云服务器监控信息getMonitorData
+  1.	查看云服务器监控信息getMonitorData
 
-h)	其他接口
+8.	其他接口
 
-  i.	查询实例资源规格列表describeInstanceTypes
+  1.	查询实例资源规格列表describeInstanceTypes
 
   本项目完全开源，后续将随着用户的反馈意见和ECS API参考手册的修订不断增强完善SDK实现。
 
