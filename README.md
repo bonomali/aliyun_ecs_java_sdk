@@ -24,7 +24,7 @@ Aliyun ECS Java SDK
 
   很大一部分阿里云开发者采用Java作为其应用开发语言，因此他们需要各项云服务的Java SDK。ECS作为整个阿里云平台非常核心的云服务器弹性计算服务，用户基础非常广泛。两方面因素决定ECS Java SDK的需求是非常现实而强烈的，而目前还没有提供ECS API全部功能的项目，特别是开源项目。
 
-  本项目的实现代码完全开源，采用Apache License Version 2.0,。代码遵照与Aliyun其它服务Java SDK相同的规范，例如OSS Java SDK和OTS Java SDK。公共功能基于官方标准代码，例如如下几个命名空间com.aliyun.com.{auth/comm/parser/utils}，而为ECS API开发的代码也类似地位于[com.aliyun.openservices](https://github.com/kloudkl/aliyun_ecs_java_sdk/tree/master/src/main/java/com/aliyun/openservices)命名空间下，因此与其它API Java SDK的兼容性和可集成度很高。
+  本项目的实现代码完全开源，采用Apache License Version 2.0。代码遵照与Aliyun其它服务Java SDK相同的规范，例如[OSS Java SDK](http://help.aliyun.com/manual?helpId=664)和[OTS Java SDK](http://help.aliyun.com/manual?helpId=664)。公共功能基于官方标准代码，例如如下几个命名空间com.aliyun.com.{auth/comm/parser/utils}，而为ECS API开发的代码也类似地位于[com.aliyun.openservices](https://github.com/kloudkl/aliyun_ecs_java_sdk/tree/master/src/main/java/com/aliyun/openservices)命名空间下，因此与其它API Java SDK的兼容性和可集成度很高。
 
   实现的接口包括实例、磁盘、镜像、网络、安全组、数据中心、监控和其他相关接口。调用方式的请求、响应和签名严格遵照API参考手册规定，符合接口调用安全性要求。实现了所有数据类型，序列化和反序列化为XML。实现了错误代码。调用方式完全符合参考手册规定。
 因此，本项目与官方API Java SDK高度一致，为应用开发者提供了调用Aliyun ECS所有各种服务功能所必需的API接口，简化了其项目代码，提高了开发效率。
