@@ -5,7 +5,7 @@ aliyun_ecs_java_sdk
 
 ## Contributors
 
-* Kai Li ([@kloudkl](https://github.com/kloudkl))
+* [Kai Li](http://112.124.14.15/KL_for_Aliyun_ECS_Java_SDK_submission.pdf) ([@kloudkl](https://github.com/kloudkl)). Click [here](http://112.124.14.15/KL_for_Aliyun_ECS_Java_SDK_submission.pdf) to learn more [about me](http://112.124.14.15/KL_for_Aliyun_ECS_Java_SDK_submission.pdf).
 
 ## Documentation
 
