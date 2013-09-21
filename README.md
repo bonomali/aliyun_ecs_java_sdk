@@ -1,7 +1,7 @@
 Aliyun ECS Java SDK
 ===================
 
-[Aliyun ECS Java SDK](https://github.com/kloudkl/aliyun_ecs_java_sdk) is the Java SDK for [Aliyun ECS (Elastic Compute Service)](http://www.aliyun.com/product/ecs/). Aliyun_ecs_java_sdk is simple, can be used with any JVM programming language, and is a lot of fun to use!
+    [Aliyun ECS Java SDK](https://github.com/kloudkl/aliyun_ecs_java_sdk) is the Java SDK for [Aliyun ECS (Elastic Compute Service)](http://www.aliyun.com/product/ecs/). Aliyun_ecs_java_sdk is simple, can be used with any JVM programming language, and is a lot of fun to use!
 
 ## Contributors
 
@@ -9,20 +9,20 @@ Aliyun ECS Java SDK
 
 ## Documentation
 
-[Official API Documentation](http://dev.aliyun.com/read.php?tid=41) and [API specifications](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf) can be found on the [Aliyun ECS API](http://dev.aliyun.com/read.php?tid=41) and the [Aliyun Elastic Compute Service API Reference](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf).
+    [Official API Documentation](http://dev.aliyun.com/read.php?tid=41) and [API specifications](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf) can be found on the [Aliyun ECS API](http://dev.aliyun.com/read.php?tid=41) and the [Aliyun Elastic Compute Service API Reference](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf).
 
 ## 作品特性说明
 1、	作品名称
 
-Aliyun ECS (Elastic Compute Service) Java SDK。
+    Aliyun ECS (Elastic Compute Service) Java SDK。
 
 2、	关键特性
 
-实现了阿里云弹性计算服务API参考手册（2013-01-10版本）全部接口。
+    实现了[阿里云弹性计算服务API参考手册（2013-01-10版本）](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf)全部接口。
 
 3、	创新点
 
-很大一部分阿里云开发者采用Java作为其应用开发语言，因此他们需要各项云服务的Java SDK。ECS作为整个阿里云平台非常核心的云服务器弹性计算服务，用户基础非常广泛。两方面因素决定ECS Java SDK的需求是非常现实而强烈的，而目前还没有提供ECS API全部功能的项目，特别是开源项目。
+    很大一部分阿里云开发者采用Java作为其应用开发语言，因此他们需要各项云服务的Java SDK。ECS作为整个阿里云平台非常核心的云服务器弹性计算服务，用户基础非常广泛。两方面因素决定ECS Java SDK的需求是非常现实而强烈的，而目前还没有提供ECS API全部功能的项目，特别是开源项目。
 
 本项目的实现代码完全开源，采用Apache License Version 2.0,。代码遵照与Aliyun其它服务Java SDK相同的规范，例如OSS Java SDK和OTS Java SDK。公共功能基于官方标准代码，例如如下几个命名空间com.aliyun.com.{auth/comm/parser/utils}，而为AP开发的代码也类似地位于com.aliyun.openservices命名空间下，因此与其它API Java SDK的兼容性和可集成度很高。
 
@@ -33,21 +33,21 @@ Aliyun ECS (Elastic Compute Service) Java SDK。
 ## 作品与云计算关联性说明.
 1、	作品使用到阿里云哪些产品或服务
 
-本作品为阿里云弹性计算服务开发了Java SDK。
+    本作品为阿里云弹性计算服务开发了Java SDK。
 
 2、	阿里云API接口版本
 
-本作品的Java SDK实现遵照的API 参考手册API版本为2013-01-10（为便于评审，本作品评审参考材料附录了该版本的《ECS-API-Reference.pdf》）。
+    本作品的Java SDK实现遵照的[API 参考手册API版本为2013-01-10](](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf))（为便于评审，本作品评审参考材料附录了[该版本的《ECS-API-Reference.pdf》](](http://oss.aliyuncs.com/aliyun_portal_storage/dasai/2013/ECS/ECS-API-Reference.pdf))）。
 
 3、	如何使用阿里云产品或服务实现作品功能
 
-本作品开发的Java SDK遵照API 参考手册的规定封装公共参数与各项服务接口特定参数，生成请求签名，构造请求结构，调用阿里云弹性计算服务，并按照参考手册定义的数据类型和错误代码解析返回结果。
+    本作品开发的Java SDK遵照API 参考手册的规定封装公共参数与各项服务接口特定参数，生成请求签名，构造请求结构，调用阿里云弹性计算服务，并按照参考手册定义的数据类型和错误代码解析返回结果。
 
 4、	使用阿里云产品后解决了什么问题
 
-本项目与官方API Java SDK高度一致，为应用开发者提供了调用Aliyun ECS所有各种服务功能所必需的API接口，简化了其项目代码，提高了开发效率。开发者主要需要创建ECSClient实例，并调用其各接口即可简单方便地实现与ECS服务的交互。
+    本项目与官方API Java SDK高度一致，为应用开发者提供了调用Aliyun ECS所有各种服务功能所必需的API接口，简化了其项目代码，提高了开发效率。开发者主要需要创建ECSClient实例，并调用其各接口即可简单方便地实现与ECS服务的交互。
 
-本SDK提供的接口功能如下：
+    本SDK提供的接口功能如下：
 
 a)	实例相关接口
 
@@ -107,20 +107,20 @@ h)	其他接口
 
 i.	查询实例资源规格列表describeInstanceTypes
 
-本项目完全开源，后续将随着用户的反馈意见和ECS API参考手册的修订不断增强完善SDK实现。
+    本项目完全开源，后续将随着用户的反馈意见和ECS API参考手册的修订不断增强完善SDK实现。
 
 
 ## Getting help
 
-Feel free to ask questions on [Aliyun ECS BBS](http://bbs.aliyun.com/thread.php?fid=127).
+    Feel free to ask questions on [Aliyun ECS BBS](http://bbs.aliyun.com/thread.php?fid=127).
 
-You can also come to Aliyun ECS Java SDK project website to [create a new issue](https://github.com/kloudkl/aliyun_ecs_java_sdk/issues/) and [send a pull request](https://github.com/kloudkl/aliyun_ecs_java_sdk/pulls/). 
+    You can also come to Aliyun ECS Java SDK project website to [create a new issue](https://github.com/kloudkl/aliyun_ecs_java_sdk/issues/) and [send a pull request](https://github.com/kloudkl/aliyun_ecs_java_sdk/pulls/). 
 
 ## Acknowledgements
 
-[Aliyun 云服务器（Elastic Compute Service, ECS）](http://www.aliyun.com/product/ecs/)是一种处理能力可弹性伸缩的计算服务，其管理方式比物理服务器更简单高效。云服务器帮助您快速构建更稳定、安全的应用，降低开发运维的难度和整体IT成本，使您能够更专注于核心业务创新。
+    [Aliyun 云服务器（Elastic Compute Service, ECS）](http://www.aliyun.com/product/ecs/)是一种处理能力可弹性伸缩的计算服务，其管理方式比物理服务器更简单高效。云服务器帮助您快速构建更稳定、安全的应用，降低开发运维的难度和整体IT成本，使您能够更专注于核心业务创新。
 
-[Aliyun Elastic Compute Service (ECS)](http://www.aliyun.com/product/ecs/) is a scalable computing service. It is simpler and more efficient to manage than the physical servers. The ECS enables you to focus on 
+    [Aliyun Elastic Compute Service (ECS)](http://www.aliyun.com/product/ecs/) is a scalable computing service. It is simpler and more efficient to manage than the physical servers. The ECS enables you to focus on 
 your core business innovation by helping you quickly build more stable and secure applications, easing development and operation, and reducing the overall IT cost. 
 
 ## License
